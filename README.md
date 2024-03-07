@@ -21,7 +21,7 @@
 </span>
 
 <a href='https://ella-diffusion.github.io/'><img src='https://img.shields.io/badge/Project-Page-green'></a>
-<a href=''><img src='https://img.shields.io/badge/Technique-Report-red'></a>
+<a href=''><img src='https://img.shields.io/badge/arXiv-coming soon-b31b1b.svg'></a>
 </div>
 
 <div align="center">

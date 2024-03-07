@@ -20,7 +20,7 @@
     <a href="https://www.skicyyu.org/">Gang Yu&#10022</a>
 </span>
 
-<a href='https://elle-diffusion.github.io/'><img src='https://img.shields.io/badge/Project-Page-green'></a>
+<a href='https://ella-diffusion.github.io/'><img src='https://img.shields.io/badge/Project-Page-green'></a>
 <a href=''><img src='https://img.shields.io/badge/Technique-Report-red'></a>
 </div>
 

@@ -20,6 +20,7 @@
     <a href="https://www.skicyyu.org/">Gang Yu&#10022</a>
 </span>
 <p>
+* Equal contributions, &#10022 Corresponding Author
 </p>
 
 <img src="./assets/ELLA-Diffusion.jpg" width="30%" > <br/>

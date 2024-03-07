@@ -19,16 +19,17 @@
 <span class="author-block">
     <a href="https://www.skicyyu.org/">Gang Yu&#10022</a>
 </span>
+<p>
+</p>
 
+<img src="./assets/ELLA-Diffusion.jpg" width="30%" > <br/>
 <a href='https://ella-diffusion.github.io/'><img src='https://img.shields.io/badge/Project-Page-green'></a>
 <a href=''><img src='https://img.shields.io/badge/arXiv-coming soon-b31b1b.svg'></a>
 </div>
 
-<div align="center">
-    <img src="./assets/ELLA-Diffusion.jpg" width="5%">
-    Official code of "ELLA: Equip Diffusion Models with LLM for Enhanced Semantic Alignment".
-</div>
-
+Official code of "ELLA: Equip Diffusion Models with LLM for Enhanced Semantic Alignment".
+<p>
+</p>
 <div align="center">
     <img src="./assets/teaser_3img.png" width="100%">
     <img src="./assets/teaser1_raccoon.png" width="100%">

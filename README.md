@@ -25,7 +25,7 @@
 
 <img src="./assets/ELLA-Diffusion.jpg" width="30%" > <br/>
 <a href='https://ella-diffusion.github.io/'><img src='https://img.shields.io/badge/Project-Page-green'></a>
-<a href=''><img src='https://img.shields.io/badge/arXiv-2403.05135-b31b1b.svg'></a>
+<a href='https://arxiv.org/abs/2403.05135'><img src='https://img.shields.io/badge/arXiv-2403.05135-b31b1b.svg'></a>
 </div>
 
 Official code of "ELLA: Equip Diffusion Models with LLM for Enhanced Semantic Alignment".
@@ -38,6 +38,7 @@ Official code of "ELLA: Equip Diffusion Models with LLM for Enhanced Semantic Al
 
 ## 🌟 Changelog
 
+- [2024.3.11] Update arXiv [link](https://arxiv.org/abs/2403.05135)
 - [2024.3.7] Initial update
 
 ## 📝 TODO

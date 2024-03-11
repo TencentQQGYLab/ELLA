@@ -11,10 +11,10 @@
     <a href="https://openreview.net/profile?id=~Yixiao_Fang1">Yixiao Fang*</a>,
 </span>
 <span class="author-block">
-    <a href="https://openreview.net/profile?id=~Pei_Cheng1">Pei Cheng</a>,
+    <a href="https://openreview.net/profile?id=~BIN_FU2">Bin Fu*</a>,
 </span>
 <span class="author-block">
-    <a href="https://openreview.net/profile?id=~BIN_FU2">Bin Fu</a>,
+    <a href="https://openreview.net/profile?id=~Pei_Cheng1">Pei Cheng</a>,
 </span>
 <span class="author-block">
     <a href="https://www.skicyyu.org/">Gang Yu&#10022</a>

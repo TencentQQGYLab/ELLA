@@ -181,7 +181,7 @@ def main():
 
     device = str(accelerator.device)
     if args.vqa_model == 'mplug':
-        vqa_model = MPLUG(ckpt='/mnt/gyfs/public/modelscope/hub/damo/mplug_visual-question-answering_coco_large_en/', device=device)
+        vqa_model = MPLUG(device=device)
     else:
         raise NotImplementedError
     vqa_model = accelerator.prepare(vqa_model)

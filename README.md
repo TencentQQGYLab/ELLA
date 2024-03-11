@@ -47,7 +47,7 @@ The guideline of DPG-Bench:
 
 1. Generate your images according to our [prompts](./dpg_bench/prompts/).
     
-    It is recommended to generate 4 images per prompt and grid them to 2x2 format. **Please Make sure your generated image's filename is the same with the prompt.**
+    It is recommended to generate 4 images per prompt and grid them to 2x2 format. **Please Make sure your generated image's filename is the same with the prompt's filename.**
 
 2. Run the following command to conduct evaluation.
 

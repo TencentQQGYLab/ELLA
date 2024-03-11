@@ -38,11 +38,42 @@ Official code of "ELLA: Equip Diffusion Models with LLM for Enhanced Semantic Al
 
 ## 🌟 Changelog
 
-- [2024.3.11] Update arXiv [link](https://arxiv.org/abs/2403.05135)
-- [2024.3.7] Initial update
+- **[2024.3.11]** 🔥 Release DPG-Bench! Welcome to try! 
+- **[2024.3.7]** Initial update
+
+## 📊 DPG-Bench
+
+The guideline of DPG-Bench:
+
+1. Generate your images according to our [prompts](./dpg_bench/prompts/).
+    
+    It is recommended to generate 4 images per prompt and grid them to 2x2 format. **Please Make sure your generated image's filename is the same with the prompt.**
+
+2. Run the following command to conduct evaluation.
+
+    ```bash
+    bash dpg_bench/dist_eval.sh $YOUR_IMAGE_PATH $RESOLUTION
+    ```
+
+Thanks to the excellent work of [DSG](https://github.com/j-min/DSG) sincerely, we follow their instructions to generate questions and answers of DPG-Bench.
 
 ## 📝 TODO
 
 - [ ] release checkpoint
 - [ ] release inference code
-- [ ] release DPG-Bench
+- [x] release DPG-Bench
+
+## 😉 Citation
+
+If you find **ELLA** useful for your research and applications, please cite us using this BibTeX:
+
+```
+@misc{hu2024ella,
+      title={ELLA: Equip Diffusion Models with LLM for Enhanced Semantic Alignment}, 
+      author={Xiwei Hu and Rui Wang and Yixiao Fang and Bin Fu and Pei Cheng and Gang Yu},
+      year={2024},
+      eprint={2403.05135},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV}
+}
+```

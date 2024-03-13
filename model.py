@@ -37,11 +37,7 @@ class SquaredReLU(nn.Module):
 
 class PerceiverAttentionBlock(nn.Module):
     def __init__(
-        self,
-        d_model: int,
-        n_heads: int,
-        norm_type="ln",
-        time_embedding_dim: Optional[int] = None,
+        self, d_model: int, n_heads: int, time_embedding_dim: Optional[int] = None
     ):
         super().__init__()
         self.attn = nn.MultiheadAttention(d_model, n_heads, batch_first=True)
@@ -56,24 +52,9 @@ class PerceiverAttentionBlock(nn.Module):
             )
         )
 
-        self.norm_type = norm_type
-
-        if norm_type == "ln":
-            self.ln_1 = nn.LayerNorm(d_model)
-            self.ln_2 = nn.LayerNorm(d_model)
-            self.ln_ff = nn.LayerNorm(d_model)
-        elif norm_type in ("ada_norm", "ada_norm_zero"):
-            self.ln_1 = AdaLayerNorm(d_model, time_embedding_dim)
-            self.ln_2 = AdaLayerNorm(d_model, time_embedding_dim)
-            self.ln_ff = AdaLayerNorm(d_model, time_embedding_dim)
-        else:
-            raise ValueError(f"invalid {norm_type=}")
-
-        if self.norm_type == "ada_norm_zero":
-            self.gate_linear = nn.Linear(
-                time_embedding_dim or d_model, 2 * d_model, bias=True
-            )
-            nn.init.zeros_(self.gate_linear.bias)
+        self.ln_1 = AdaLayerNorm(d_model, time_embedding_dim)
+        self.ln_2 = AdaLayerNorm(d_model, time_embedding_dim)
+        self.ln_ff = AdaLayerNorm(d_model, time_embedding_dim)
 
     def attention(self, q: torch.Tensor, kv: torch.Tensor):
         attn_output, attn_output_weights = self.attn(q, kv, kv, need_weights=False)
@@ -85,36 +66,12 @@ class PerceiverAttentionBlock(nn.Module):
         latents: torch.Tensor,
         timestep_embedding: torch.Tensor = None,
     ):
-        if self.norm_type == "ln":
-            latents = latents + self.attention(
-                q=self.ln_1(latents),
-                kv=torch.cat([self.ln_1(latents), self.ln_2(x)], dim=1),
-            )
-            latents = latents + self.mlp(self.ln_ff(latents))
-        elif self.norm_type == "ada_norm":
-            normed_latents = self.ln_1(latents, timestep_embedding)
-            latents = latents + self.attention(
-                q=normed_latents,
-                kv=torch.cat([normed_latents, self.ln_2(x, timestep_embedding)], dim=1),
-            )
-            latents = latents + self.mlp(self.ln_ff(latents, timestep_embedding))
-        elif self.norm_type == "ada_norm_zero":
-            gate1, gate2 = (
-                self.gate_linear(torch.nn.functional.silu(timestep_embedding))
-                .view(len(x), 1, -1)
-                .chunk(2, dim=-1)
-            )
-            normed_latents = self.ln_1(latents, timestep_embedding)
-            latents = latents + gate1 * self.attention(
-                q=normed_latents,
-                kv=torch.cat([normed_latents, self.ln_2(x, timestep_embedding)], dim=1),
-            )
-            latents = latents + gate2 * self.mlp(
-                self.ln_ff(latents, timestep_embedding)
-            )
-        else:
-            raise ValueError(f"invalid {self.norm_type=}")
-
+        normed_latents = self.ln_1(latents, timestep_embedding)
+        latents = latents + self.attention(
+            q=normed_latents,
+            kv=torch.cat([normed_latents, self.ln_2(x, timestep_embedding)], dim=1),
+        )
+        latents = latents + self.mlp(self.ln_ff(latents, timestep_embedding))
         return latents
 
 
@@ -125,30 +82,17 @@ class PerceiverResampler(nn.Module):
         layers: int = 6,
         heads: int = 8,
         num_latents: int = 64,
-        learnable_query=True,
         output_dim=None,
         input_dim=None,
-        norm_type="ln",
         time_embedding_dim: Optional[int] = None,
-        time_aware_query_type: Optional[str] = None,
     ):
         super().__init__()
-        self.learnable_query = learnable_query
         self.output_dim = output_dim
         self.input_dim = input_dim
-
-        self.time_aware_query_type = time_aware_query_type
-        if learnable_query:
-            self.latents = nn.Parameter(width**-0.5 * torch.randn(num_latents, width))
-
-            if self.time_aware_query_type is not None:
-                if self.time_aware_query_type == "add":
-                    self.time_aware_linear = nn.Linear(
-                        time_embedding_dim or width, width, bias=True
-                    )
-                    nn.init.zeros_(self.time_aware_linear.bias)
-                else:
-                    raise ValueError(f"invalid {time_aware_query_type=}")
+        self.latents = nn.Parameter(width**-0.5 * torch.randn(num_latents, width))
+        self.time_aware_linear = nn.Linear(
+            time_embedding_dim or width, width, bias=True
+        )
 
         if self.input_dim is not None:
             self.proj_in = nn.Linear(input_dim, width)
@@ -156,10 +100,7 @@ class PerceiverResampler(nn.Module):
         self.perceiver_blocks = nn.Sequential(
             *[
                 PerceiverAttentionBlock(
-                    width,
-                    heads,
-                    norm_type=norm_type,
-                    time_embedding_dim=time_embedding_dim,
+                    width, heads, time_embedding_dim=time_embedding_dim
                 )
                 for _ in range(layers)
             ]
@@ -170,23 +111,11 @@ class PerceiverResampler(nn.Module):
                 nn.Linear(width, output_dim), nn.LayerNorm(output_dim)
             )
 
-    def forward(
-        self, x: torch.Tensor, latents=None, timestep_embedding: torch.Tensor = None
-    ):
-        learnable_latents = None
-
-        if self.learnable_query:
-            learnable_latents = self.latents.unsqueeze(dim=0).repeat(len(x), 1, 1)
-            if self.time_aware_query_type == "add":
-                learnable_latents = learnable_latents + self.time_aware_linear(
-                    torch.nn.functional.silu(timestep_embedding)
-                )
-
-        if self.learnable_query and latents is None:
-            latents = learnable_latents
-        elif self.learnable_query and latents is not None:
-            latents = torch.cat([latents, learnable_latents], dim=1)
-
+    def forward(self, x: torch.Tensor, timestep_embedding: torch.Tensor = None):
+        learnable_latents = self.latents.unsqueeze(dim=0).repeat(len(x), 1, 1)
+        latents = learnable_latents + self.time_aware_linear(
+            torch.nn.functional.silu(timestep_embedding)
+        )
         if self.input_dim is not None:
             x = self.proj_in(x)
         for p_block in self.perceiver_blocks:
@@ -200,8 +129,7 @@ class PerceiverResampler(nn.Module):
 
 class T5TextEmbedder(nn.Module):
     def __init__(self, pretrained_path="google/flan-t5-xl", max_length=None):
-        super().__init__(is_trainable=False, input_keys=["caption"])
-
+        super().__init__()
         self.model = T5EncoderModel.from_pretrained(pretrained_path)
         self.tokenizer = T5Tokenizer.from_pretrained(pretrained_path)
         self.max_length = max_length
@@ -242,10 +170,7 @@ class ELLA(nn.Module):
         layers=6,
         heads=8,
         num_latents=64,
-        learnable_query=True,
         input_dim=2048,
-        norm_type="ada_norm",
-        time_aware_query_type="add",
     ):
         super().__init__()
 
@@ -264,11 +189,8 @@ class ELLA(nn.Module):
             layers=layers,
             heads=heads,
             num_latents=num_latents,
-            learnable_query=learnable_query,
             input_dim=input_dim,
-            norm_type=norm_type,
             time_embedding_dim=time_embed_dim,
-            time_aware_query_type=time_aware_query_type,
         )
 
     def forward(self, text_encode_features, timesteps):

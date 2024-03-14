@@ -63,6 +63,10 @@ Thanks to the excellent work of [DSG](https://github.com/j-min/DSG) sincerely, w
 - [ ] release inference code
 - [x] release DPG-Bench
 
+## 💡 Others
+
+We have also found [LaVi-Bridge](https://arxiv.org/abs/2403.07860), another independent but similar work completed almost concurrently, which offers additional insights not covered by ELLA. The difference between ELLA and LaVi-Bridge can be found in [issue 13](https://github.com/ELLA-Diffusion/ELLA/issues/13). We are delighted to welcome other researchers and community users to promote the development of this field.
+
 ## 😉 Citation
 
 If you find **ELLA** useful for your research and applications, please cite us using this BibTeX:

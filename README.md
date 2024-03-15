@@ -58,7 +58,7 @@ The guideline of DPG-Bench:
 Thanks to the excellent work of [DSG](https://github.com/j-min/DSG) sincerely, we follow their instructions to generate questions and answers of DPG-Bench.
 
 ## 📝 TODO
-
+🥹 We are sorry that due to our company's review process, the release of the checkpoint and inference code will be slightly delayed. We appreciate your patience and PLEASE STAY TUNED.
 - [ ] release checkpoint
 - [ ] release inference code
 - [x] release DPG-Bench

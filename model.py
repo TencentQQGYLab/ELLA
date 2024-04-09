@@ -134,14 +134,19 @@ class T5TextEmbedder(nn.Module):
         self.tokenizer = T5Tokenizer.from_pretrained(pretrained_path)
         self.max_length = max_length
 
-    def forward(self, caption, text_input_ids=None, attention_mask=None):
+    def forward(
+        self, caption, text_input_ids=None, attention_mask=None, max_length=None
+    ):
+        if max_length is None:
+            max_length = self.max_length
+
         if text_input_ids is None or attention_mask is None:
-            if self.max_length is not None:
+            if max_length is not None:
                 text_inputs = self.tokenizer(
                     caption,
                     return_tensors="pt",
                     add_special_tokens=True,
-                    max_length=self.max_length,
+                    max_length=max_length,
                     padding="max_length",
                     truncation=True,
                 )

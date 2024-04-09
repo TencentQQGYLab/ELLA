@@ -38,8 +38,26 @@ Official code of "ELLA: Equip Diffusion Models with LLM for Enhanced Semantic Al
 
 ## 🌟 Changelog
 
+- **[2024.4.9]** 🔥 Release [ELLA-SD1.5](https://huggingface.co/QQGYLab/ELLA/blob/main/ella-sd1.5-tsc-t5xl.safetensors)! Welcome to try! 
 - **[2024.3.11]** 🔥 Release DPG-Bench! Welcome to try! 
 - **[2024.3.7]** Initial update
+
+## Inference
+
+### ELLA-SD1.5
+
+
+```bash
+# get ELLA-SD1.5 at https://huggingface.co/QQGYLab/ELLA/blob/main/ella-sd1.5-tsc-t5xl.safetensors
+
+# comparing ella-sd1.5 and sd1.5
+# will generate images at `./assets/ella-inference-examples`
+python3 inference.py test --save_folder ./assets/ella-inference-examples --ella_path /path/to/ella-sd1.5-tsc-t5xl.safetensors
+
+# build a demo for ella-sd1.5
+GRADIO_SERVER_NAME=0.0.0.0 GRADIO_SERVER_PORT=8082 python3 ./inference.py demo /path/to/ella-sd1.5-tsc-t5xl.safetensors
+```
+
 
 ## 📊 DPG-Bench
 
@@ -58,10 +76,8 @@ The guideline of DPG-Bench:
 Thanks to the excellent work of [DSG](https://github.com/j-min/DSG) sincerely, we follow their instructions to generate questions and answers of DPG-Bench.
 
 ## 📝 TODO
-🥹 We are sorry that due to our company's review process, the release of the checkpoint and inference code will be slightly delayed. We appreciate your patience and PLEASE STAY TUNED.
-- [ ] release checkpoint
-- [ ] release inference code
-- [x] release DPG-Bench
+
+
 
 ## 💡 Others
 

@@ -211,11 +211,15 @@ def build_demo(ella_path, sd_path="runwayml/stable-diffusion-v1-5"):
     with gr.Blocks() as app:
         gr.Markdown(
             """
-    # ELLA vs SD
+    # ELLA-SD1.5 vs SD1.5
 
+    [ELLA Project](https://ella-diffusion.github.io/)
+
+    ## Notes
+    
     ** short prompt also works, but the result is much better after the caption is refined. **
 
-    ## Caption Refining with In Context Learning(ICL)
+    ### Caption Refining with In Context Learning(ICL)
 
     caption refining instruction example:
     ```
@@ -412,4 +416,4 @@ def main(save_folder, ella_path):
 
 
 if __name__ == "__main__":
-    fire.Fire()
+    fire.Fire(dict(test=main, demo=build_demo))

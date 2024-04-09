@@ -38,7 +38,7 @@ Official code of "ELLA: Equip Diffusion Models with LLM for Enhanced Semantic Al
 
 ## 🌟 Changelog
 
-- **[2024.4.9]** 🔥 Release [ELLA-SD1.5](https://huggingface.co/QQGYLab/ELLA/blob/main/ella-sd1.5-tsc-t5xl.safetensors)! Welcome to try! 
+- **[2024.4.9]** 🔥🔥🔥 Release [ELLA-SD1.5](https://huggingface.co/QQGYLab/ELLA/blob/main/ella-sd1.5-tsc-t5xl.safetensors) Checkpoint! Welcome to try! 
 - **[2024.3.11]** 🔥 Release DPG-Bench! Welcome to try! 
 - **[2024.3.7]** Initial update
 
@@ -77,6 +77,10 @@ Thanks to the excellent work of [DSG](https://github.com/j-min/DSG) sincerely, w
 
 ## 📝 TODO
 
+- [ ] add huggingface demo link
+- [x] release checkpoint
+- [x] release inference code
+- [x] release DPG-Bench
 
 
 ## 💡 Others

@@ -42,11 +42,12 @@ Official code of "ELLA: Equip Diffusion Models with LLM for Enhanced Semantic Al
 - **[2024.3.11]** 🔥 Release DPG-Bench! Welcome to try! 
 - **[2024.3.7]** Initial update
 
-## Download
+
+## 🚀 Usage
+
+### Download
 
 You can download ELLA models from [QQGYLab/ELLA](https://huggingface.co/QQGYLab/ELLA).
-
-## Usage
 
 ### Quick View
 
@@ -71,7 +72,7 @@ Thanks to [@ExponentialML](https://github.com/ExponentialML/) and [@kijai](https
 1. [ExponentialML/ComfyUI_ELLA](https://github.com/ExponentialML/ComfyUI_ELLA/)
 2. [kijai/ComfyUI-ELLA-wrapper](https://github.com/kijai/ComfyUI-ELLA-wrapper)
 
-## Notes
+## 📙 Notes
 
 ELLA is still in its early stages of research, and we have not yet conducted comprehensive testing on all potential applications of ELLA. We welcome constructive and friendly suggestions from the community.
 
@@ -158,6 +159,10 @@ Our testing has revealed that some community models heavily reliant on trigger w
  
   Our goal is to ensure better compatibility with a wider range of community models; however, we currently do not have a comprehensive set of experiences to share. If you have any suggestions, we would be grateful if you could share them in issue.
 
+### 4. FlanT5 must run in fp16 mode.
+
+As described in [issues#23](https://github.com/TencentQQGYLab/ELLA/issues/23), we conducted the vast majority of experiments on V100, which does not support bf16, so we had to use the fp16 T5 for training. we tested and found that the output difference between the fp16 T5 and the bf16 T5 cannot be ignored, resulting in obvious differences in the generated images. 
+Therefore, it is recommended to use fp16 T5 for inference.
 
 ## 📊 DPG-Bench
 

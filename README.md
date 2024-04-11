@@ -38,6 +38,7 @@ Official code of "ELLA: Equip Diffusion Models with LLM for Enhanced Semantic Al
 
 ## 🌟 Changelog
 
+- **[2024.4.11]** Add some results of [EMMA(Efficient Multi-Modal Adapter)](#emma)
 - **[2024.4.9]** 🔥🔥🔥 Release [ELLA-SD1.5](https://huggingface.co/QQGYLab/ELLA/blob/main/ella-sd1.5-tsc-t5xl.safetensors) Checkpoint! Welcome to try! 
 - **[2024.3.11]** 🔥 Release DPG-Bench! Welcome to try! 
 - **[2024.3.7]** Initial update
@@ -180,7 +181,7 @@ The guideline of DPG-Bench:
 
 Thanks to the excellent work of [DSG](https://github.com/j-min/DSG) sincerely, we follow their instructions to generate questions and answers of DPG-Bench.
 
-
+<a id="emma"></a>
 ## 🚧 EMMA - Efficient Multi-Modal Adapter (Work in progress)
 
 As described in the conclusion section of ELLA's paper  and [issue#15](https://github.com/TencentQQGYLab/ELLA/issues/15),

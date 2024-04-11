@@ -75,6 +75,53 @@ The guideline of DPG-Bench:
 
 Thanks to the excellent work of [DSG](https://github.com/j-min/DSG) sincerely, we follow their instructions to generate questions and answers of DPG-Bench.
 
+
+## 🚧 EMMA - Efficient Multi-Modal Adapter (Work in progress)
+
+As described in the conclusion section of ELLA's paper  and [issue#15](https://github.com/TencentQQGYLab/ELLA/issues/15),
+we plan to investigate the integration of
+MLLM with diffusion models, enabling the utilization of interleaved image-text input as a conditional component in the image generation process. Here are some very early results with EMMA-SD1.5, stay tuned.
+
+<table>
+<thead>
+  <tr>
+    <th>prompt</th>
+    <th>object image</th>
+    <th>results</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td>A woman is skiing down a snowy mountain, wearing a bright orange ski suit and goggles.</td>
+    <td rowspan="3"><img src="./assets/emma/emma_c.jpg" width="100%"></td>
+    <td><img src="./assets/emma/emma_3.jpg" width="100%"></td>
+  </tr>
+  <tr>
+    <td>A woman is playing basketball on an outdoor court, wearing a sleeveless jersey.</td>
+    <td><img src="./assets/emma/emma_1.jpg" width="100%"></td>
+  </tr>
+  <tr>
+    <td>A woman is hiking through a dense forest, wearing a green camouflage jacket and carrying a backpack.</td>
+    <td><img src="./assets/emma/emma_2.jpg" width="100%"></td>
+  </tr>
+  <tr>
+    <td>a  dog jumping over a vehicle on a snowy day</td>
+    <td rowspan="2"><img src="./assets/emma/emma_a.jpg" width="100%"></td>
+    <td><img src="./assets/emma/emma_6.jpg" width="100%"></td>
+  </tr>
+  <tr>
+    <td>a  dog reading a book with a pink glasses on</td>
+    <td><img src="./assets/emma/emma_4.jpg" width="100%"></td>
+  </tr>
+  <tr>
+    <td>A dog standing on a mountaintop, surveying the stunning view. Snow-capped peaks stretch out in the distance, and a river winds its way through the valley below.</td>
+    <td><img src="./assets/emma/emma_b.jpg" width="100%"></td>
+    <td><img src="./assets/emma/emma_5.jpg" width="100%"></td>
+  </tr>
+</tbody>
+</table>
+
+
 ## 📝 TODO
 
 - [ ] add huggingface demo link

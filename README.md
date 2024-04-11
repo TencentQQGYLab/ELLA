@@ -67,7 +67,7 @@ GRADIO_SERVER_NAME=0.0.0.0 GRADIO_SERVER_PORT=8082 python3 ./inference.py demo /
 
 ### Using ELLA in ComfyUI
 
-Thanks to [@ExponentialML](https://github.com/ExponentialML/) and [@kijai](https://github.com/kijai), now we can using ELLA in ComfyUI:
+Thanks to [@ExponentialML](https://github.com/ExponentialML/) and [@kijai](https://github.com/kijai), now we can use ELLA in ComfyUI:
 
 1. [ExponentialML/ComfyUI_ELLA](https://github.com/ExponentialML/ComfyUI_ELLA/)
 2. [kijai/ComfyUI-ELLA-wrapper](https://github.com/kijai/ComfyUI-ELLA-wrapper)

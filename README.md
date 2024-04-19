@@ -38,6 +38,7 @@ Official code of "ELLA: Equip Diffusion Models with LLM for Enhanced Semantic Al
 
 ## 🌟 Changelog
 
+- **[2024.4.19]** We provide ELLA’s ComfyUI plugin: [TencentQQGYLab/ComfyUI-ELLA](https://github.com/TencentQQGYLab/ComfyUI-ELLA)
 - **[2024.4.11]** Add some results of [EMMA(Efficient Multi-Modal Adapter)](#emma)
 - **[2024.4.9]** 🔥🔥🔥 Release [ELLA-SD1.5](https://huggingface.co/QQGYLab/ELLA/blob/main/ella-sd1.5-tsc-t5xl.safetensors) Checkpoint! Welcome to try! 
 - **[2024.3.11]** 🔥 Release DPG-Bench! Welcome to try! 
@@ -68,7 +69,10 @@ GRADIO_SERVER_NAME=0.0.0.0 GRADIO_SERVER_PORT=8082 python3 ./inference.py demo /
 
 ### Using ELLA in ComfyUI
 
-Thanks to [@ExponentialML](https://github.com/ExponentialML/) and [@kijai](https://github.com/kijai), now we can use ELLA in ComfyUI:
+We provide ELLA’s ComfyUI plugin: [TencentQQGYLab/ComfyUI-ELLA](https://github.com/TencentQQGYLab/ComfyUI-ELLA), which supports ControlNet, img2img and more. You are welcome to try it out.
+
+
+Thanks to [@ExponentialML](https://github.com/ExponentialML/) and [@kijai](https://github.com/kijai), they offer third-party ComfyUI plugins for ELLA:
 
 1. [ExponentialML/ComfyUI_ELLA](https://github.com/ExponentialML/ComfyUI_ELLA/)
 2. [kijai/ComfyUI-ELLA-wrapper](https://github.com/kijai/ComfyUI-ELLA-wrapper)
@@ -230,7 +234,6 @@ MLLM with diffusion models, enabling the utilization of interleaved image-text i
 
 ## 📝 TODO
 
-- [ ] add huggingface demo link
 - [x] release checkpoint
 - [x] release inference code
 - [x] release DPG-Bench

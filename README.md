@@ -38,6 +38,7 @@ Official code of "ELLA: Equip Diffusion Models with LLM for Enhanced Semantic Al
 
 ## 🌟 Changelog
 
+- **[2024.6.14]** 🔥🔥 EMMA: [Technical Report](https://arxiv.org/abs/2406.09162), [Project Website](https://tencentqqgylab.github.io/EMMA/)
 - **[2024.5.13]** EMMA is coming soon. Let's first preview the results of EMMA: [中文版](https://wrong.wang/blog/20240512-emma/), [English Version](https://wrong.wang/blog/20240512-what-is-emma/)
 - **[2024.4.19]** We provide ELLA’s ComfyUI plugin: [TencentQQGYLab/ComfyUI-ELLA](https://github.com/TencentQQGYLab/ComfyUI-ELLA)
 - **[2024.4.11]** Add some results of [EMMA(Efficient Multi-Modal Adapter)](#emma)
